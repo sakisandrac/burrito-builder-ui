@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 
 function OrderForm(props) {
   const [name, setName] = useState("");
@@ -7,6 +7,7 @@ function OrderForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
     clearInputs();
+    console.log('name:', name, 'order:', ingredients)
   }
 
   function clearInputs() {
@@ -28,17 +29,27 @@ function OrderForm(props) {
     "cilantro",
     "sour cream",
   ];
+
   const ingredientButtons = possibleIngredients.map((ingredient) => {
     return (
       <button
         key={ingredient}
         name={ingredient}
-        // onClick={(e) => }
+        onClick={(e) => addIngredient(e)}
       >
         {ingredient}
       </button>
     );
   });
+
+  const addIngredient = (e) => {
+    e.preventDefault();
+    setIngredients(prev => [...prev, e.target.name])
+  }
+
+  const handleChange = (e) => {
+    setName(e.target.value)
+  }
 
   return (
     <form>
@@ -47,7 +58,7 @@ function OrderForm(props) {
         placeholder="Name"
         name="name"
         value={name}
-        onChange={(e) => handleSubmit(e)}
+        onChange={(e) => handleChange(e)}
         />
 
       {ingredientButtons}
