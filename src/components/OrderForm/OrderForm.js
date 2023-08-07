@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import { postOrder } from "../../apiCalls";
+import './OrderForm.css'
 
 function OrderForm(props) {
   const [name, setName] = useState("");
@@ -52,6 +53,7 @@ function OrderForm(props) {
   const ingredientButtons = possibleIngredients.map((ingredient) => {
     return (
       <button
+        className="ingredients-btn"
         key={ingredient}
         name={ingredient}
         onClick={(e) => addIngredient(e)}
