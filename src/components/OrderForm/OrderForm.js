@@ -47,8 +47,8 @@ function OrderForm(props) {
         placeholder="Name"
         name="name"
         value={name}
-        // onChange={(e) => }
-      />
+        onChange={(e) => handleSubmit(e)}
+        />
 
       {ingredientButtons}
 
