@@ -10,10 +10,12 @@ const postOrder = (newOrder) => {
       'Content-Type': 'application/json'
     }
   })
-  .then(res => res.json())
-  .catch(err => {
-    console.log('ERROR', err)
-    throw new Error(`${err}`)
+  .then(response => {
+    if (response.ok) {
+      return response.json();
+    } else {
+      throw new Error(`${response.statusText}`);
+    };
   })
 }
 
