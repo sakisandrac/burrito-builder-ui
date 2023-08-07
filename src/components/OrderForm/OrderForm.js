@@ -34,9 +34,8 @@ function OrderForm(props) {
 
       postOrder(newOrder)
       .then(data => {
-        console.log('posted', data)
-        setConfirm('Order sent successfully!')
-        props.addToOrders(data)
+        setConfirm('Order sent successfully!');
+        props.addToOrders(data);
       })
       .catch(err => setError(`${err}`))
 
