@@ -32,6 +32,7 @@ describe('Users should see errors if anything goes wrong', () => {
       .get(':nth-child(15)').click()
     cy.wait('@fetch-orders2').then(intercept => {
       cy.get(':nth-child(15)').should('have.text', 'Error: Internal Server Error')
+      .get('section').children().should('have.length', 1)
     })
   })
   
