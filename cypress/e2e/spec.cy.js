@@ -1,4 +1,5 @@
 describe("Users should be able to see order and add new orders", () => {
+
   beforeEach(() => {
     cy.intercept('GET', 'http://localhost:3001/api/v1/orders', {
       statusCode: 200,
@@ -32,16 +33,16 @@ describe("Users should be able to see order and add new orders", () => {
 
     cy.wait('@fetch-orders').then(intercept => {
       cy.get('input').type('Sally')
-      cy.get('[name="beans"]').click()
-      cy.get('[name="steak"]').click()
-      cy.get('p').should('have.text', 'Order: beans, steak')
-      cy.get(':nth-child(15)').click()
-      cy.wait('@fetch-orders2').then(intercept => {
+      .get('[name="beans"]').click()
+      .get('[name="steak"]').click()
+      .get('p').should('have.text', 'Order: beans, steak')
+      .get(':nth-child(15)').click()
+      .wait('@fetch-orders2').then(intercept => {
         cy.get(':nth-child(15)').should('have.text', 'Order sent successfully!')
-        cy.get('section > :nth-child(2)').should('be.visible')
-        cy.get(':nth-child(2) > h3').should('have.text', 'Sally')
-        cy.get(':nth-child(2) > .ingredient-list > :nth-child(1)').should('have.text', 'beans')
-        cy.get(':nth-child(2) > .ingredient-list > :nth-child(2)').should('have.text', 'steak')
+        .get('section > :nth-child(2)').should('be.visible')
+        .get(':nth-child(2) > h3').should('have.text', 'Sally')
+        .get(':nth-child(2) > .ingredient-list > :nth-child(1)').should('have.text', 'beans')
+        .get(':nth-child(2) > .ingredient-list > :nth-child(2)').should('have.text', 'steak')
       })
     })
   })  

@@ -12,7 +12,7 @@ const postOrder = (newOrder) => {
   })
   .then(res => res.json())
   .catch(err => {
-    console.log(err)
+    console.log('ERROR', err)
     throw new Error(`${err}`)
   })
 }

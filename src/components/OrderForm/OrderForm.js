@@ -36,12 +36,11 @@ function OrderForm(props) {
       .then(data => {
         setConfirm('Order sent successfully!');
         props.addToOrders(data);
+        setError("");
       })
       .catch(err => setError(`${err}`))
-
-      setError("")
     } else {
-      setError("Please fill out entire order before subimtting!")
+      setError("Please fill out entire order before subimtting!");
     }
   }
 
