@@ -25,8 +25,8 @@ function OrderForm(props) {
   function handleSubmit(e) {
     e.preventDefault();
     clearInputs();
-    if (name && ingredients.length > 0) {
 
+    if (name && ingredients.length > 0) {
       const newOrder = {
         name: name,
         ingredients: ingredients
@@ -36,6 +36,7 @@ function OrderForm(props) {
       .then(data => {
         console.log('posted', data)
         setConfirm('Order sent successfully!')
+        props.addToOrders(data)
       })
       .catch(err => setError(`${err}`))
 

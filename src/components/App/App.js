@@ -13,11 +13,15 @@ function App() {
     .catch((err) => console.error("Error fetching:", err));
   },[]);
 
+  const addToOrders = (newOrder) => {
+    setOrders(prev => [...prev, newOrder])
+  }
+
   return (
     <main className="App">
       <header>
         <h1>Burrito Builder</h1>
-        <OrderForm />
+        <OrderForm addToOrders={addToOrders}/>
       </header>
 
       <Orders orders={orders} />
