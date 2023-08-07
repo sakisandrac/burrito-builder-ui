@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { postOrder } from "../../apiCalls";
 import './OrderForm.css'
 
